@@ -53,7 +53,7 @@ const Home = (props: Props): ReactElement => {
                   </span>
                 </h1>
                 <p className="text-lg pb-8 text-slate-600 pt-4">
-                  Paymanent platforms. Deposit at ZB Bako Account Number #### #### #### #### then upload the proof of payment using the form below. Thank you
+                  Paymanent platforms. Deposit at ZB Bank Account Number #### #### #### #### then upload the proof of payment using the form below. Thank you
                 </p>
                 {/* <div className="flex w-full">
                   <Link
