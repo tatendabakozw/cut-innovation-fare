@@ -55,14 +55,14 @@ const Home = (props: Props): ReactElement => {
                 <p className="text-lg pb-8 text-slate-600 pt-4">
                   Paymanent platforms. Deposit at ZB Bako Account Number #### #### #### #### then upload the proof of payment using the form below. Thank you
                 </p>
-                <div className="flex w-full">
+                {/* <div className="flex w-full">
                   <Link
                     to="#form-item"
                     className="bg-blue-900 capitalize text-white text-xl px-4 py-1 rounded-full"
                   >
                     Sign up for free
                   </Link>
-                </div>
+                </div> */}
               </div>{" "}
               {/* end of text-container */}
             </div>{" "}
