@@ -17,7 +17,6 @@ const Home = (props: Props): ReactElement => {
   const [type, setType] = useState("");
   const [csvFile, SetCsvFile] = useState<any>();
   const url = `${apiUrl}/event/register`;
-  const formData = new FormData();
 
   const register_user = async () => {
     try {
@@ -54,8 +53,7 @@ const Home = (props: Props): ReactElement => {
                   </span>
                 </h1>
                 <p className="text-lg pb-8 text-slate-600 pt-4">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
-                  dignissim, neque ut vanic barem ultrices sollicitudin
+                  Paymanent platforms. Deposit at ZB Bako Account Number #### #### #### #### then upload the proof of payment using the form below. Thank you
                 </p>
                 <div className="flex w-full">
                   <Link
