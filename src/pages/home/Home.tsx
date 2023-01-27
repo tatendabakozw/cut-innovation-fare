@@ -1,43 +1,41 @@
 import { ReactElement } from "react";
-import { useState } from "react";
-import axios from "axios";
-import { apiUrl } from "@utils/apiUrl";
-import { Select } from "@chakra-ui/react";
+import {
+  CheckIcon,
+  BanknotesIcon,
+  ClipboardDocumentCheckIcon,
+} from "@heroicons/react/24/outline";
 import logo from "../../assets/icon.png";
 import cog_wheel from "../../assets/cogwheel1.svg";
 import cog_blue1 from "../../assets/cog_blue1.svg";
-import PaymentModal from "@components/modal/PaymentModal";
 import { Link } from "react-router-dom";
 
 type Props = {};
 
 const Home = (props: Props): ReactElement => {
-  const [loading, setLoading] = useState(false);
-  const [name, setName] = useState("");
-  const [surname, setSurname] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [type, setType] = useState("");
-  const [csvFile, SetCsvFile] = useState<any>();
-  const url = `${apiUrl}/event/register`;
-
-  const register_user = async () => {
-    try {
-      setLoading(true);
-      const { data } = await axios.post(url, {
-        name,
-        surname,
-        email,
-        phone,
-        type,
-      });
-      console.log(data);
-      setLoading(false);
-    } catch (error) {
-      setLoading(false);
-      console.log(error);
-    }
-  };
+  const registration_steps = [
+    {
+      icon: <BanknotesIcon height={16} width={16} className="text-gray-500" />,
+      heading: "Initialize event",
+      descrption: `If you want to pay using cash, skip this step. You can pay for the event using any of the accounts listed below: #### #### #### #### or #### #### #### ####. If you want to pay using cash you can also register, then pay on days of the actual event. Not to keep the proof of payment as it shall be needed in the steps to follow for your registration of the event. Payment can be done using either cash or bank. PRICES DEPEND ON TYPE OF CANDIDATE WHO IS APPLYING`,
+    },
+    {
+      icon: (
+        <ClipboardDocumentCheckIcon
+          height={16}
+          width={16}
+          className="text-green-500"
+        />
+      ),
+      heading: "online registration",
+      descrption: `Candidates will be required to complete an online registration
+  form on our website or via the button provided below.NOTE: if you payed using bank, you will be required to provide a proof of payment using the form provided on the register page. All information used on the registration step will be used to allocate participating areas and other substances.`,
+    },
+    {
+      icon: <CheckIcon height={16} width={16} className="text-green-500" />,
+      heading: "Attend Event",
+      descrption: `You will receive further information pertaining to the event through the email you have provided to us during the registration state. Thank You. GOOD LUCK.`,
+    },
+  ];
 
   return (
     <div className="w-full h-full min-h-screen md:bg-gradient-to-r bg-gradient-to-b from-white to-blue-300">
@@ -78,7 +76,7 @@ const Home = (props: Props): ReactElement => {
         </div>
       </div>
       {/* end of header */}
-      <div className="w-full bg-slate-100 py-8">
+      {/* <div className="w-full bg-slate-100 py-8">
         <div
           id="form-item"
           className=" bg-white md:p-8 p-4 rounded-xl shadow w-full max-w-7xl mx-auto grid grid-cols-2 md:gap-8 gap-4"
@@ -130,14 +128,68 @@ const Home = (props: Props): ReactElement => {
             />
           </div>
         </div>
-      </div>
-      {/* <div
-        onClick={register_user}
-        className="flex flex-col bg-blue-900 mb-12 hover:bg-blue-800 cursor-pointer p-2 text-white rounded-lg mt-16"
-      >
-        <p className=" text-center">Register Now</p>
       </div> */}
+
+      <div className="w-full bg-white py-16">
+        <div className="max-w-7xl w-full mx-auto bg-white">
+          <p className="text-slate-900 font-semibold text-3xl text-center pb-16">
+            How to participate
+          </p>
+          <ol className="relative text-gray-500 border-l border-slate-300 dark:border-gray-700 dark:text-gray-400">
+            {registration_steps.map((step, index) => (
+              <StepItem
+                key={index}
+                icon={step.icon}
+                iconStyles={"bg-gray-200"}
+                heading={step.heading}
+                desciption={step.descrption}
+              />
+            ))}
+          </ol>
+        </div>
+      </div>
+
+      <div className="w-full bg-white px-2 py-16">
+        <div className="max-w-7xl w-full mx-auto">
+          <p className="text-slate-900 font-semibold text-3xl text-center pb-16">
+            Conference Fees
+          </p>
+          <div className="grid grid-cols-4 gap-8">
+            {[1,2,3,4,5].map((item, index)=>(
+              <div className="flex space-y-2 bg-slate-50 rounded-xl shadow flex-col p-4">
+                  <p className="text-slate-900 font-semibold text-xl">International Delegate</p>
+                  <p className="text-slate-500 text-sm">Users from outside of zim</p>
+                  <p className="pt-4 text-slate-900 text-3xl font-bold">$200</p>
+                  <span className="text-white text-center font-semibold bg-blue-900 rounded-lg p-2 w-full">Register Now</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
+  );
+};
+
+interface StepItemProps {
+  icon: any;
+  heading: string;
+  desciption: string;
+  iconStyles?: string;
+}
+
+const StepItem = (props: StepItemProps) => {
+  return (
+    <li className="mb-10 ml-6">
+      <span
+        className={`${props.iconStyles} absolute flex items-center justify-center w-8 h-8 rounded-full -left-4 ring-4 ring-white`}
+      >
+        {props.icon}
+      </span>
+      <h3 className="font-medium leading-tight capitalize text-slate-900">
+        {props.heading}
+      </h3>
+      <p className="text-sm">{props.desciption}</p>
+    </li>
   );
 };
 
