@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { Select } from "@chakra-ui/react";
 import { useFetch } from "@hooks/useFetch";
+import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 import slugify from "@helpers/sligify";
+import { Link } from "react-router-dom";
 
 type Props = {};
 
@@ -24,10 +26,23 @@ function Register({}: Props) {
   const countries_url = `https://restcountries.com/v3.1/all`;
   const countries = useFetch(countries_url);
 
+  const new_c_url = `https://services.bluekai.com/rest/countries`;
+  const new_resp = useFetch(new_c_url);
+
+  console.log("new countries ------- ", new_resp);
+
   return (
     <div className="w-full bg-slate-100 min-h-screen">
       <div className="max-w-7xl p-4 w-full mx-auto rounded">
         <div className="bg-white w-full max-w-7xl flex flex-col space-y-8 mx-auto md:p-8 p-4 h-full rounded-lg">
+          <div className="flex">
+            <Link
+              to="/"
+              className="flex bg-slate-100 hover:bg-slate-200 rounded-full p-2"
+            >
+              <ArrowLeftIcon height={24} width={24} />
+            </Link>
+          </div>
           <p className="text-lg font-semibold text-slate-900 text-center">
             Apply Now
           </p>
@@ -73,13 +88,17 @@ function Register({}: Props) {
               <Select
                 value={country}
                 onChange={(e) => setCountry(e.target.value)}
-                placeholder={"Country"}
               >
-                {countries?.data?.map((option: any, index: number) => (
-                  <option key={index} value={slugify(option.name.common)}>
-                    {option.name.common}
-                  </option>
-                ))}
+                <option value="" disabled selected >Select Country</option>
+                {countries?.data
+                  ?.sort((a: any, b: any) =>
+                    a.name.common.localeCompare(b.name.common)
+                  )
+                  ?.map((option: any, index: number) => (
+                    <option key={index} value={slugify(option.name.common)}>
+                      {option.name.common}
+                    </option>
+                  ))}
               </Select>
             </div>
           </div>
@@ -181,19 +200,18 @@ function Register({}: Props) {
           <div className="grid md:grid-cols-4 md:gap-4 gap-2 grid-cols-1 items-center">
             <div className="col-span-1 font-semibold">{"Select Country"} </div>
             <div className="md:col-span-3 col-span-1">
-            <div>
-            Proof Of Payment{" "}
-            <input
-              type="file"
-              name="file"
-              onChange={(e: any) => {
-                SetCsvFile(e.target.files[0]);
-              }}
-            />
-          </div>
+              <div>
+                Proof Of Payment{" "}
+                <input
+                  type="file"
+                  name="file"
+                  onChange={(e: any) => {
+                    SetCsvFile(e.target.files[0]);
+                  }}
+                />
+              </div>
             </div>
           </div>
-
 
           <div className="flex self-end bg-blue-900 text-white p-2 rounded-lg cursor-pointer">
             Register Now
@@ -236,8 +254,8 @@ const FieldItem = ({
           <Select
             value={value}
             onChange={(e) => setValue(e.target.value)}
-            placeholder={placeholder_}
           >
+            <option value="" disabled selected >{placeholder_}</option>
             {select_options?.map((option: any, index: number) => (
               <option key={index} value={slugify(option.name)}>
                 {option.name}

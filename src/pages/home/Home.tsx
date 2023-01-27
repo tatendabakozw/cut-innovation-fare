@@ -1,8 +1,9 @@
-import { ReactElement } from "react";
+import { ReactElement, useRef } from "react";
 import {
   CheckIcon,
   BanknotesIcon,
   ClipboardDocumentCheckIcon,
+  ArrowDownCircleIcon,
 } from "@heroicons/react/24/outline";
 import logo from "../../assets/icon.png";
 import cog_wheel from "../../assets/cogwheel1.svg";
@@ -13,6 +14,7 @@ import slugify from "@helpers/sligify";
 type Props = {};
 
 const Home = (props: Props): ReactElement => {
+  const ref = useRef<any>(null);
   const registration_steps = [
     {
       icon: <BanknotesIcon height={16} width={16} className="text-gray-500" />,
@@ -37,6 +39,10 @@ const Home = (props: Props): ReactElement => {
       descrption: `You will receive further information pertaining to the event through the email you have provided to us during the registration state. Thank You. GOOD LUCK.`,
     },
   ];
+
+  const handleScroll = () => {
+    ref.current?.scrollIntoView({behavior: 'smooth'});
+  };
 
   const price_tiers = [
     {
@@ -67,8 +73,11 @@ const Home = (props: Props): ReactElement => {
   ];
 
   return (
-    <div className="w-full h-full min-h-screen md:bg-gradient-to-r bg-gradient-to-b from-white to-blue-300">
+    <div className=" w-full h-full min-h-screen md:bg-gradient-to-r bg-gradient-to-b from-white to-blue-300">
       <div className="relative min-h-screen flex flex-col overflow-x-hidden">
+        <div onClick={handleScroll} className="absolute md:bottom-10 bottom-5 cursor-pointer md:right-10 right-5 p-2 animate-bounce bg-blue-900 text-white rounded-full ">
+          <ArrowDownCircleIcon height={28} width={28} />
+        </div>
         <div className="flex flex-row w-full font-semibold items-center z-50 justify-between p-2">
           <p>CUT</p>
           <img src={logo} alt="logo icon" className="h-16 w-16" />
@@ -163,7 +172,7 @@ const Home = (props: Props): ReactElement => {
         </div>
       </div> */}
 
-      <div className="w-full bg-white py-16 px-4">
+      <div ref={ref}  className="w-full bg-white py-16 px-4">
         <div className="max-w-7xl w-full mx-auto bg-white">
           <p className="text-slate-900 font-semibold text-3xl text-center pb-16">
             How to participate
@@ -193,10 +202,10 @@ const Home = (props: Props): ReactElement => {
                 <p className="text-slate-900 capitalize font-semibold text-xl">
                   {item.name}
                 </p>
-                <p className="text-slate-500 text-sm">
-                  {item.description}
+                <p className="text-slate-500 text-sm">{item.description}</p>
+                <p className="pt-4 text-slate-900 text-3xl font-bold">
+                  ${item.price}
                 </p>
-                <p className="pt-4 text-slate-900 text-3xl font-bold">${item.price}</p>
                 <Link
                   to={`/register?delegate=${slugify(item.name)}`}
                   className="text-white text-center font-semibold bg-blue-900 rounded-lg p-2 w-full"
