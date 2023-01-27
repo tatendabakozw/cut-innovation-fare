@@ -26,11 +26,6 @@ function Register({}: Props) {
   const countries_url = `https://restcountries.com/v3.1/all`;
   const countries = useFetch(countries_url);
 
-  const new_c_url = `https://services.bluekai.com/rest/countries`;
-  const new_resp = useFetch(new_c_url);
-
-  console.log("new countries ------- ", new_resp);
-
   return (
     <div className="w-full bg-slate-100 min-h-screen">
       <div className="max-w-7xl p-4 w-full mx-auto rounded">
