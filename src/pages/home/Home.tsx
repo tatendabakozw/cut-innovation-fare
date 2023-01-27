@@ -117,67 +117,14 @@ const Home = (props: Props): ReactElement => {
           </div>
         </div>
       </div>
-      {/* end of header */}
-      {/* <div className="w-full bg-slate-100 py-8">
-        <div
-          id="form-item"
-          className=" bg-white md:p-8 p-4 rounded-xl shadow w-full max-w-7xl mx-auto grid grid-cols-2 md:gap-8 gap-4"
-        >
-          <input
-            type="text"
-            className="bg-slate-200 rounded p-2 col-span-1"
-            placeholder="Enter name"
-          />
-          <input
-            type="text"
-            className="bg-slate-200 rounded p-2 col-span-1"
-            placeholder="Enter surname"
-          />
-
-          <input
-            type="text"
-            className="bg-slate-200 rounded p-2 col-span-2"
-            placeholder="Enter email"
-          />
-          <input
-            type="text"
-            className="bg-slate-200 rounded p-2 col-span-1"
-            placeholder="Enter phone number"
-          />
-          <Select placeholder="Select Application Type">
-            <option value="international_delegate">
-              International Delegate
-            </option>
-            <option value="local_delegate">Local Delegate</option>
-            <option value="postgraduate_students">Postgraduate Students</option>
-            <option value="undergraduate_students">
-              Undergraduate Students
-            </option>
-            <option value="cooporate_per_individual">
-              Co-Operate per Individual
-            </option>
-            <option value="other">Other</option>
-          </Select>
-
-          <div>
-            Proof Of Payment{" "}
-            <input
-              type="file"
-              name="file"
-              onChange={(e: any) => {
-                SetCsvFile(e.target.files[0]);
-              }}
-            />
-          </div>
-        </div>
-      </div> */}
+   
 
       <div ref={ref}  className="w-full bg-white py-16 px-4">
         <div className="max-w-7xl w-full mx-auto bg-white">
           <p className="text-slate-900 font-semibold text-3xl text-center pb-16">
             How to participate
           </p>
-          <ol className="relative text-gray-500 border-l border-slate-300 dark:border-gray-700 dark:text-gray-400">
+          <ol className="relative text-gray-500 border-l px-4 border-slate-300 dark:border-gray-700 dark:text-gray-400">
             {registration_steps.map((step, index) => (
               <StepItem
                 key={index}
@@ -232,7 +179,7 @@ const StepItem = (props: StepItemProps) => {
   return (
     <li className="mb-10 ml-6">
       <span
-        className={`${props.iconStyles} absolute flex items-center justify-center w-8 h-8 rounded-full -left-4 ring-4 ring-white`}
+        className={`${props.iconStyles} absolute flex items-center justify-center w-8 h-8 rounded-full -left-2 ring-4 ring-white`}
       >
         {props.icon}
       </span>
