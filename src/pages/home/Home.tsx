@@ -45,28 +45,29 @@ const Home = (props: Props): ReactElement => {
   };
 
   const price_tiers = [
+  
     {
-      name: "international delegate",
+      name: "Postgraduate student",
       price: 200,
       description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit",
     },
     {
-      name: "local delegate",
-      price: 100,
-      description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit",
-    },
-    {
-      name: "international delegate",
+      name: "Undergraduate Student",
       price: 200,
       description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit",
     },
     {
-      name: "international delegate",
+      name: "Professional",
       price: 200,
       description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit",
     },
     {
-      name: "international delegate",
+      name: "Cooperate",
+      price: 200,
+      description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit",
+    },
+    {
+      name: "Non presenter",
       price: 200,
       description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit",
     },
