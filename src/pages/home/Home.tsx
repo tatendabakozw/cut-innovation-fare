@@ -124,7 +124,7 @@ const Home = (props: Props): ReactElement => {
           <p className="text-slate-900 font-semibold text-3xl text-center pb-16">
             How to participate
           </p>
-          <ol className="relative text-gray-500 border-l px-4 border-slate-300 dark:border-gray-700 dark:text-gray-400">
+          <ol className="relative text-gray-500 border-l border-slate-300 dark:border-gray-700 dark:text-gray-400">
             {registration_steps.map((step, index) => (
               <StepItem
                 key={index}
@@ -179,7 +179,7 @@ const StepItem = (props: StepItemProps) => {
   return (
     <li className="mb-10 ml-6">
       <span
-        className={`${props.iconStyles} absolute flex items-center justify-center w-8 h-8 rounded-full -left-2 ring-4 ring-white`}
+        className={`${props.iconStyles} absolute flex items-center justify-center w-8 h-8 rounded-full -left-4 ring-4 ring-white`}
       >
         {props.icon}
       </span>
