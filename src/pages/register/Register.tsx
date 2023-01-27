@@ -89,7 +89,9 @@ function Register({}: Props) {
                 value={country}
                 onChange={(e) => setCountry(e.target.value)}
               >
-                <option value="" disabled selected >Select Country</option>
+                <option value="" disabled selected>
+                  Select Country
+                </option>
                 {countries?.data
                   ?.sort((a: any, b: any) =>
                     a.name.common.localeCompare(b.name.common)
@@ -186,12 +188,14 @@ function Register({}: Props) {
           />
           <FieldItem
             label="Inidicate Special Needs"
+            is_message
             value={special_needs}
             setValue={setSpecialNeeds}
             placeholder_="What special needs do you needs"
           />
           <FieldItem
             label="Diet"
+            is_message
             value={dietary}
             setValue={setDietaryNeeds}
             placeholder_="Indicate any special dietary requirements"
@@ -230,6 +234,7 @@ interface FieldItemProps {
   optional?: boolean;
   is_dropdown?: boolean;
   select_options?: any;
+  is_message?: boolean;
 }
 
 const FieldItem = ({
@@ -240,6 +245,7 @@ const FieldItem = ({
   placeholder_,
   is_dropdown,
   select_options,
+  is_message,
 }: FieldItemProps) => {
   return (
     <div className="grid md:grid-cols-4 md:gap-4 gap-2 grid-cols-1 items-center">
@@ -251,11 +257,10 @@ const FieldItem = ({
       </div>
       <div className="md:col-span-3 col-span-1">
         {is_dropdown ? (
-          <Select
-            value={value}
-            onChange={(e) => setValue(e.target.value)}
-          >
-            <option value="" disabled selected >{placeholder_}</option>
+          <Select value={value} onChange={(e) => setValue(e.target.value)}>
+            <option value="" disabled selected>
+              {placeholder_}
+            </option>
             {select_options?.map((option: any, index: number) => (
               <option key={index} value={slugify(option.name)}>
                 {option.name}
@@ -263,13 +268,25 @@ const FieldItem = ({
             ))}
           </Select>
         ) : (
-          <input
-            type="text"
-            value={value}
-            onChange={(e) => setValue(e.target.value)}
-            placeholder={placeholder_}
-            className="outline-none p-2 w-full border border-slate-200 rounded"
-          />
+          <>
+            {is_message ? (
+              <textarea
+                rows={5}
+                value={value}
+                onChange={(e) => setValue(e.target.value)}
+                placeholder={placeholder_}
+                className="outline-none p-2 w-full border border-slate-200 rounded"
+              />
+            ) : (
+              <input
+                type="text"
+                value={value}
+                onChange={(e) => setValue(e.target.value)}
+                placeholder={placeholder_}
+                className="outline-none p-2 w-full border border-slate-200 rounded"
+              />
+            )}
+          </>
         )}
       </div>
     </div>
