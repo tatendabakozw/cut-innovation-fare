@@ -7,6 +7,7 @@ import logo from "../../assets/icon.png";
 import cog_wheel from "../../assets/cogwheel1.svg";
 import cog_blue1 from "../../assets/cog_blue1.svg";
 import PaymentModal from "@components/modal/PaymentModal";
+import { Link } from "react-router-dom";
 
 type Props = {};
 
@@ -66,8 +67,13 @@ const Home = (props: Props): ReactElement => {
             Innovation, Industrialisation Growth and Sustainable Development
           </p>
           <div className="flex flex-row bg-white md:text-md text-sm items-center rounded-full py-1 pr-1 md:space-x-5 space-x-2  pl-3">
-            <p>Click here to pay for registration Online</p>
-            <PaymentModal />
+            <p>Click here for registration</p>
+            <Link
+              to="/register"
+              className="bg-blue-900 text-white cursor-pointer hover:bg-blue-800 rounded-full text-center px-3 py-1 text-sm"
+            >
+              Register Now
+            </Link>
           </div>
         </div>
       </div>
