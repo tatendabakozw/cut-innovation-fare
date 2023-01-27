@@ -80,8 +80,11 @@ const Home = (props: Props): ReactElement => {
           <ArrowDownCircleIcon height={28} width={28} />
         </div>
         <div className="flex flex-row w-full font-semibold items-center z-50 justify-between p-2">
-          <p>CUT</p>
-          <img src={logo} alt="logo icon" className="h-16 w-16" />
+          <span className="flex flex-row items-center md:space-x-4 space-x-2">
+          <img src={logo} alt="logo icon" className="md:h-24 h-16 md:w-24 w-16" />
+          <p>Chinhoyi University</p>
+          </span>
+          
 
           <Link
             to="/register"
