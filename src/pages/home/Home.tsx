@@ -163,7 +163,7 @@ const Home = (props: Props): ReactElement => {
         </div>
       </div> */}
 
-      <div className="w-full bg-white py-16">
+      <div className="w-full bg-white py-16 px-4">
         <div className="max-w-7xl w-full mx-auto bg-white">
           <p className="text-slate-900 font-semibold text-3xl text-center pb-16">
             How to participate

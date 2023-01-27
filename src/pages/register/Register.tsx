@@ -91,7 +91,7 @@ function Register({}: Props) {
           />
 
           <FieldItem
-            label="National Id"
+            label="National Id/Passport No"
             value={nat_id}
             setValue={setNatId}
             placeholder_="national id"
