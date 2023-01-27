@@ -8,6 +8,7 @@ import logo from "../../assets/icon.png";
 import cog_wheel from "../../assets/cogwheel1.svg";
 import cog_blue1 from "../../assets/cog_blue1.svg";
 import { Link } from "react-router-dom";
+import slugify from "@helpers/sligify";
 
 type Props = {};
 
@@ -37,15 +38,47 @@ const Home = (props: Props): ReactElement => {
     },
   ];
 
+  const price_tiers = [
+    {
+      name: "international delegate",
+      price: 200,
+      description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit",
+    },
+    {
+      name: "local delegate",
+      price: 100,
+      description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit",
+    },
+    {
+      name: "international delegate",
+      price: 200,
+      description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit",
+    },
+    {
+      name: "international delegate",
+      price: 200,
+      description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit",
+    },
+    {
+      name: "international delegate",
+      price: 200,
+      description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit",
+    },
+  ];
+
   return (
     <div className="w-full h-full min-h-screen md:bg-gradient-to-r bg-gradient-to-b from-white to-blue-300">
       <div className="relative min-h-screen flex flex-col overflow-x-hidden">
         <div className="flex flex-row w-full font-semibold items-center z-50 justify-between p-2">
           <p>CUT</p>
           <img src={logo} alt="logo icon" className="h-16 w-16" />
-          <p className="bg-blue-900 text-white text-sm py-2 px-3 rounded-full">
-            More Info
-          </p>
+
+          <Link
+            to="/register"
+            className="bg-blue-900 text-white text-sm py-2 px-3 rounded-full"
+          >
+            Apply Now
+          </Link>
         </div>
         <div className="absolute md:h-96 h-40 md:w-96 w-40 rounded-full md:-top-20 -top-10 md:-right-20 -right-10 z-0">
           <img src={cog_wheel} alt="" className="" />
@@ -154,13 +187,22 @@ const Home = (props: Props): ReactElement => {
           <p className="text-slate-900 font-semibold text-3xl text-center pb-16">
             Conference Fees
           </p>
-          <div className="grid grid-cols-4 gap-8">
-            {[1,2,3,4,5].map((item, index)=>(
+          <div className="grid md:grid-cols-4 grid-cols-1 md:gap-8 gap-4">
+            {price_tiers.map((item, index) => (
               <div className="flex space-y-2 bg-slate-50 rounded-xl shadow flex-col p-4">
-                  <p className="text-slate-900 font-semibold text-xl">International Delegate</p>
-                  <p className="text-slate-500 text-sm">Users from outside of zim</p>
-                  <p className="pt-4 text-slate-900 text-3xl font-bold">$200</p>
-                  <span className="text-white text-center font-semibold bg-blue-900 rounded-lg p-2 w-full">Register Now</span>
+                <p className="text-slate-900 capitalize font-semibold text-xl">
+                  {item.name}
+                </p>
+                <p className="text-slate-500 text-sm">
+                  {item.description}
+                </p>
+                <p className="pt-4 text-slate-900 text-3xl font-bold">${item.price}</p>
+                <Link
+                  to={`/register?delegate=${slugify(item.name)}`}
+                  className="text-white text-center font-semibold bg-blue-900 rounded-lg p-2 w-full"
+                >
+                  Register Now
+                </Link>
               </div>
             ))}
           </div>
