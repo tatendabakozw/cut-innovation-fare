@@ -149,7 +149,7 @@ const Home = (props: Props): ReactElement => {
           </p>
           <div className="grid md:grid-cols-4 grid-cols-1 md:gap-8 gap-4">
             {price_tiers.map((item, index) => (
-              <div className="flex space-y-2 bg-slate-50 rounded-xl shadow flex-col p-4">
+              <div className="flex space-y-2 bg-slate-50 rounded-lg flex-col p-4">
                 <p className="text-slate-900 capitalize font-semibold text-xl">
                   {item.name}
                 </p>
