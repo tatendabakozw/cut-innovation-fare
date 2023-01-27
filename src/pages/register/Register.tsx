@@ -196,7 +196,7 @@ function Register({}: Props) {
 
 
           <div className="flex self-end bg-blue-900 text-white p-2 rounded-lg cursor-pointer">
-            Save Job
+            Register Now
           </div>
         </div>
       </div>
