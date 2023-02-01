@@ -127,11 +127,11 @@ function Register({}: Props) {
             select_options={[
               { value: "mr", name: "Mr" },
               { value: "mrs", name: "Mrs" },
-              { value: "miss", name: "Mrs" },
-              { value: "doc", name: "Mrs" },
+              { value: "miss", name: "Miss" },
+              { value: "doc", name: "Doc" },
               { value: "sr", name: "Sister" },
               { value: "fr/rev", name: "Father/Reverend" },
-              { value: "prof", name: "Mrs" },
+              { value: "prof", name: "Prof" },
               { value: "hon", name: "Honorable" },
             ]}
             setValue={setTitle}
