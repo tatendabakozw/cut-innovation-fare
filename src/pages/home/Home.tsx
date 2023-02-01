@@ -4,6 +4,7 @@ import {
   BanknotesIcon,
   ClipboardDocumentCheckIcon,
   ArrowDownCircleIcon,
+  ArrowDownTrayIcon,
 } from "@heroicons/react/24/outline";
 import logo from "../../assets/icon.png";
 import cog_wheel from "../../assets/cogwheel1.svg";
@@ -119,6 +120,10 @@ const Home = (props: Props): ReactElement => {
               Register Now
             </Link>
           </div>
+        <div className="flex text-slate-900 space-x-4 flex-row items-center font-semibold py-16">
+          <p>More Info</p>
+          <ArrowDownTrayIcon height={20} width={20} />
+        </div>
         </div>
       </div>
    
