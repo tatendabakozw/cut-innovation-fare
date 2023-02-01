@@ -99,7 +99,7 @@ function Register({}: Props) {
             </Link>
           </div>
           <p className="text-lg font-semibold text-slate-900 text-center">
-            Apply Now
+            Register Now
           </p>
           <FieldItem
             label="Email"
