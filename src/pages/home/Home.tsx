@@ -117,7 +117,7 @@ const Home = (props: Props): ReactElement => {
               to="/register"
               className="bg-blue-900 text-white cursor-pointer hover:bg-blue-800 rounded-full text-center px-3 py-1 text-sm"
             >
-              Register Now
+              Apply Now
             </Link>
           </div>
         <Link to="/null-1.pdf" download target="_blank" className="flex text-slate-900 space-x-4 flex-row items-center font-semibold py-16">
