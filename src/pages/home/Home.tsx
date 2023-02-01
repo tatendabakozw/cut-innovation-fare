@@ -120,7 +120,7 @@ const Home = (props: Props): ReactElement => {
               Register Now
             </Link>
           </div>
-        <Link to="../../assets/null-1.docx" download target="_blank" className="flex text-slate-900 space-x-4 flex-row items-center font-semibold py-16">
+        <Link to="/null-1.pdf" download target="_blank" className="flex text-slate-900 space-x-4 flex-row items-center font-semibold py-16">
           <p>More Info</p>
           <ArrowDownTrayIcon height={20} width={20} />
         </Link>
