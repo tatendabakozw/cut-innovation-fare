@@ -4,6 +4,18 @@ import { useFetch } from "@hooks/useFetch";
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 import slugify from "@helpers/sligify";
 import { Link } from "react-router-dom";
+import {
+  getStorage,
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+  deleteObject,
+  uploadString,
+} from "firebase/storage";
+import { firebaseApp } from "src/config/firebase-config";
+import axios from "axios";
+import { apiUrl } from "@utils/apiUrl";
+import { getMessage } from "@helpers/getMessage";
 
 type Props = {};
 
@@ -22,6 +34,54 @@ function Register({}: Props) {
   const [special_needs, setSpecialNeeds] = useState("");
   const [dietary, setDietaryNeeds] = useState("");
   const [csvFile, SetCsvFile] = useState<any>();
+  const [file_loading, setFileLoading] = useState(false);
+  const [progress, setProgress] = useState();
+  const [file_to_upload, setFileToUpload] = useState();
+
+  const storage = getStorage(firebaseApp);
+
+  const upload_video = async (e: any) => {
+    
+    const videoFile = csvFile;
+    const storageRef = ref(storage, `Videos/${Date.now()}-${videoFile.name}`);
+    try {
+      setFileLoading(true);
+      const uploadTask = uploadBytesResumable(storageRef, videoFile);
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          const uploadProgress: any =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          setProgress(uploadProgress);
+        },
+        (error) => {
+          console.log(error);
+          setFileLoading(false)
+        },
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref).then(
+            async (downloadURL: any) => {
+              const { data } = await axios.post(
+                `${apiUrl}/api/event/register`,
+                {
+                  email: email,
+                  name: full_name,
+                  phone_number: phone,
+                  proof_of_payment: downloadURL,
+                }
+              );
+              console.log(data);
+              setFileToUpload(downloadURL);
+              setFileLoading(false);
+            }
+          );
+        }
+      );
+    } catch (error) {
+      console.log(getMessage(error));
+      setFileLoading(false);
+    }
+  };
 
   const countries_url = `https://restcountries.com/v3.1/all`;
   const countries = useFetch(countries_url);
@@ -212,9 +272,18 @@ function Register({}: Props) {
             </div>
           </div>
 
-          <div className="flex self-end bg-blue-900 text-white p-2 rounded-lg cursor-pointer">
-            Register Now
-          </div>
+          {file_loading ? (
+            <div className="flex self-end bg-blue-900 text-white p-2 rounded-lg cursor-pointer">
+              Uploading File ...
+            </div>
+          ) : (
+            <div
+              onClick={upload_video}
+              className="flex self-end bg-blue-900 text-white p-2 rounded-lg cursor-pointer"
+            >
+              Register Now
+            </div>
+          )}
         </div>
       </div>
     </div>
