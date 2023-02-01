@@ -257,7 +257,7 @@ function Register({}: Props) {
           />
 
           <div className="grid md:grid-cols-4 md:gap-4 gap-2 grid-cols-1 items-center">
-            <div className="col-span-1 font-semibold">{"Select Country"} </div>
+            <div className="col-span-1 font-semibold">{"Select Proof of payment"} </div>
             <div className="md:col-span-3 col-span-1">
               <div>
                 Proof Of Payment{" "}
