@@ -2,13 +2,13 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-  appId: import.meta.env.VITE_FIREBASE_APP_ID,
-  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
+    apiKey: "AIzaSyBQ-7-qLSRisFvrpHbJx1oruirLP7odLSc",
+    authDomain: "discord-clone-44033.firebaseapp.com",
+    projectId: "discord-clone-44033",
+    storageBucket: "discord-clone-44033.appspot.com",
+    messagingSenderId: "500057291506",
+    appId: "1:500057291506:web:0be10eba33ba157af6ee6b",
+    measurementId: "G-VWNH3EVV8P"
 };
 
 // Initialize Firebase
