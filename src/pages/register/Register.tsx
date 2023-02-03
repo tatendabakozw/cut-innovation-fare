@@ -162,7 +162,7 @@ function Register({}: Props) {
               { value: "hon", name: "Honorable" },
             ]}
             setValue={setTitle}
-            placeholder_="whats your title"
+            placeholder_="Select title"
           />
           <div className="grid md:grid-cols-4 md:gap-4 gap-2 grid-cols-1 items-center">
             <div className="col-span-1 font-semibold">{"Select Country"} </div>
@@ -197,7 +197,7 @@ function Register({}: Props) {
             label="National Id/Passport No"
             value={nat_id}
             setValue={setNatId}
-            placeholder_="national id"
+            placeholder_="national id/ passport No"
           />
           <FieldItem
             label="Organisation Type"
