@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Select } from "@chakra-ui/react";
+import { Select, useToast } from "@chakra-ui/react";
 import { useFetch } from "@hooks/useFetch";
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 import slugify from "@helpers/sligify";
@@ -37,11 +37,11 @@ function Register({}: Props) {
   const [file_loading, setFileLoading] = useState(false);
   const [progress, setProgress] = useState();
   const [file_to_upload, setFileToUpload] = useState();
+  const toast = useToast()
 
   const storage = getStorage(firebaseApp);
 
   const upload_video = async (e: any) => {
-    
     const videoFile = csvFile;
     const storageRef = ref(storage, `Videos/${Date.now()}-${videoFile.name}`);
     try {
@@ -56,23 +56,50 @@ function Register({}: Props) {
         },
         (error) => {
           console.log(error);
-          setFileLoading(false)
+          setFileLoading(false);
         },
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then(
             async (downloadURL: any) => {
-              const { data } = await axios.post(
-                `${apiUrl}/api/event/register`,
-                {
-                  email: email,
-                  name: full_name,
-                  phone_number: phone,
-                  proof_of_payment: downloadURL,
-                }
-              );
-              console.log(data);
-              setFileToUpload(downloadURL);
-              setFileLoading(false);
+              try {
+                const { data } = await axios.post(
+                  `${apiUrl}/api/event/register`,
+                  {
+                    email: email,
+                    name: full_name,
+                    phone_number: phone,
+                    proof_of_payment: downloadURL,
+                    country,
+                    city,
+                    id_number: nat_id,
+                    org_type: org_type,
+                    thematic_area: thematic_area,
+                    delegate_type,
+                    presentation_type,
+                    special_needs,
+                    diet: dietary,
+                  }
+                );
+                console.log(data);
+                setFileToUpload(downloadURL);
+                setFileLoading(false);
+                toast({
+                  title: 'Registration Successful.',
+                  status: 'success',
+                  duration: 9000,
+                  isClosable: true,
+                  position: 'top-right'
+                })
+              } catch (error) {
+                setFileLoading(false);
+                toast({
+                  title: 'Registration Failed.',
+                  status: 'error',
+                  duration: 9000,
+                  isClosable: true,
+                  position: 'top-right'
+                })
+              }
             }
           );
         }
@@ -257,7 +284,9 @@ function Register({}: Props) {
           />
 
           <div className="grid md:grid-cols-4 md:gap-4 gap-2 grid-cols-1 items-center">
-            <div className="col-span-1 font-semibold">{"Select Proof of payment"} </div>
+            <div className="col-span-1 font-semibold">
+              {"Select Proof of payment"}{" "}
+            </div>
             <div className="md:col-span-3 col-span-1">
               <div>
                 Proof Of Payment{" "}
