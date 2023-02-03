@@ -289,7 +289,7 @@ function Register({}: Props) {
             </div>
             <div className="md:col-span-3 col-span-1">
               <div>
-                Proof Of Payment{" "}
+                Upload Proof Of Payment{" "}
                 <input
                   type="file"
                   name="file"
