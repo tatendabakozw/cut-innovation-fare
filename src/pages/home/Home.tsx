@@ -11,6 +11,7 @@ import cog_wheel from "../../assets/cogwheel1.svg";
 import cog_blue1 from "../../assets/cog_blue1.svg";
 import { Link } from "react-router-dom";
 import slugify from "@helpers/sligify";
+import ConferenceSteps from "@components/ConferenceSteps/ConferenceSteps";
 
 type Props = {};
 
@@ -42,11 +43,10 @@ const Home = (props: Props): ReactElement => {
   ];
 
   const handleScroll = () => {
-    ref.current?.scrollIntoView({behavior: 'smooth'});
+    ref.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   const price_tiers = [
-  
     {
       name: "Postgraduate student",
       price: 200,
@@ -77,22 +77,30 @@ const Home = (props: Props): ReactElement => {
   return (
     <div className=" w-full h-full min-h-screen md:bg-gradient-to-r bg-gradient-to-b from-white to-blue-300">
       <div className="relative min-h-screen flex flex-col overflow-x-hidden">
-        <div onClick={handleScroll} className="absolute md:bottom-10 bottom-5 cursor-pointer md:right-10 right-5 p-2 animate-bounce bg-blue-900 text-white rounded-full ">
+        <div
+          onClick={handleScroll}
+          className="absolute md:bottom-10 bottom-5 cursor-pointer md:right-10 right-5 p-2 animate-bounce bg-blue-900 text-white rounded-full "
+        >
           <ArrowDownCircleIcon height={28} width={28} />
         </div>
         <div className="flex flex-row w-full font-semibold items-center z-50 justify-between p-2">
-          <span className="flex flex-row items-center md:space-x-4 space-x-2">
-          <img src={logo} alt="logo icon" className="md:h-24 h-16 md:w-24 w-16" />
-          <p>Chinhoyi University</p>
+          <div className="flex-1"></div>
+          <span className="flex flex-col items-center md:space-x-4 space-x-2">
+            <img
+              src={logo}
+              alt="logo icon"
+              className="md:h-24 h-16 md:w-24 w-16"
+            />
+            <p>Chinhoyi University Of Technology</p>
           </span>
-          
-
-          <Link
-            to="/register"
-            className="bg-blue-900 text-white text-sm py-2 px-3 rounded-full"
-          >
-            Register Now
-          </Link>
+          <div className="flex-1 flex flex-col">
+            <Link
+              to="/register"
+              className="bg-blue-900 self-end  text-white text-sm py-2 px-3 rounded-full"
+            >
+              Register Now
+            </Link>
+          </div>
         </div>
         <div className="absolute md:h-96 h-40 md:w-96 w-40 rounded-full md:-top-20 -top-10 md:-right-20 -right-10 z-0">
           <img src={cog_wheel} alt="" className="" />
@@ -120,58 +128,20 @@ const Home = (props: Props): ReactElement => {
               Register Now
             </Link>
           </div>
-        <Link to="/null-1.pdf" download target="_blank" className="flex text-slate-900 space-x-4 flex-row items-center font-semibold py-16">
-          <p>More Info</p>
-          <ArrowDownTrayIcon height={20} width={20} />
-        </Link>
-        </div>
-      </div>
-   
-
-      <div ref={ref}  className="w-full bg-white py-16 px-4">
-        <div className="max-w-7xl w-full mx-auto bg-white">
-          <p className="text-slate-900 font-semibold text-3xl text-center pb-16">
-            How to participate
-          </p>
-          <ol className="relative text-gray-500 border-l border-slate-300 dark:border-gray-700 dark:text-gray-400">
-            {registration_steps.map((step, index) => (
-              <StepItem
-                key={index}
-                icon={step.icon}
-                iconStyles={"bg-gray-200"}
-                heading={step.heading}
-                desciption={step.descrption}
-              />
-            ))}
-          </ol>
+          <Link
+            to="/The-Fifth-Chinhoyi-University-of-Technology-International-Conference.pdf"
+            download
+            target="_blank"
+            className="flex text-slate-900 space-x-4 flex-row items-center font-semibold py-16"
+          >
+            <p>More Info</p>
+            <ArrowDownTrayIcon height={20} width={20} />
+          </Link>
         </div>
       </div>
 
-      <div className="w-full bg-white px-2 py-16">
-        <div className="max-w-7xl w-full mx-auto">
-          <p className="text-slate-900 font-semibold text-3xl text-center pb-16">
-            Conference Fees
-          </p>
-          {/* <div className="grid md:grid-cols-4 grid-cols-1 md:gap-8 gap-4">
-            {price_tiers.map((item, index) => (
-              <div className="flex space-y-2 bg-slate-50 rounded-lg flex-col p-4">
-                <p className="text-slate-900 capitalize font-semibold text-xl">
-                  {item.name}
-                </p>
-                <p className="text-slate-500 text-sm">{item.description}</p>
-                <p className="pt-4 text-slate-900 text-3xl font-bold">
-                  ${item.price}
-                </p>
-                <Link
-                  to={`/register?delegate=${slugify(item.name)}`}
-                  className="text-white text-center font-semibold bg-blue-900 rounded-lg p-2 w-full"
-                >
-                  Register Now
-                </Link>
-              </div>
-            ))}
-          </div> */}
-        </div>
+      <div ref={ref} className="w-full bg-white py-16 px-4">
+        <ConferenceSteps />
       </div>
     </div>
   );
@@ -184,7 +154,7 @@ interface StepItemProps {
   iconStyles?: string;
 }
 
-const StepItem = (props: StepItemProps) => {
+export const StepItem = (props: StepItemProps) => {
   return (
     <li className="mb-10 ml-6">
       <span

@@ -36,14 +36,14 @@ function Register({}: Props) {
   const [csvFile, SetCsvFile] = useState<any>();
   const [file_loading, setFileLoading] = useState(false);
   const [progress, setProgress] = useState();
-  const [file_to_upload, setFileToUpload] = useState();
-  const toast = useToast()
+  const toast = useToast();
+  const [agreed, setAgreed] = useState<any>(false);
 
   const storage = getStorage(firebaseApp);
 
   const upload_video = async (e: any) => {
     const videoFile = csvFile;
-    const storageRef = ref(storage, `Videos/${Date.now()}-${videoFile.name}`);
+    const storageRef = ref(storage, `PoPs/${Date.now()}-${videoFile.name}`);
     try {
       setFileLoading(true);
       const uploadTask = uploadBytesResumable(storageRef, videoFile);
@@ -81,24 +81,23 @@ function Register({}: Props) {
                   }
                 );
                 console.log(data);
-                setFileToUpload(downloadURL);
                 setFileLoading(false);
                 toast({
-                  title: 'Registration Successful.',
-                  status: 'success',
+                  title: "Registration Successful.",
+                  status: "success",
                   duration: 9000,
                   isClosable: true,
-                  position: 'top-right'
-                })
+                  position: "top-right",
+                });
               } catch (error) {
                 setFileLoading(false);
                 toast({
-                  title: 'Registration Failed.',
-                  status: 'error',
+                  title: "Registration Failed.",
+                  status: "error",
                   duration: 9000,
                   isClosable: true,
-                  position: 'top-right'
-                })
+                  position: "top-right",
+                });
               }
             }
           );
@@ -155,7 +154,8 @@ function Register({}: Props) {
               { value: "mr", name: "Mr" },
               { value: "mrs", name: "Mrs" },
               { value: "miss", name: "Miss" },
-              { value: "doc", name: "Doc" },
+              { value: "ms", name: "Ms" },
+              { value: "doc", name: "Dr" },
               { value: "sr", name: "Sister" },
               { value: "fr/rev", name: "Father/Reverend" },
               { value: "prof", name: "Prof" },
@@ -190,17 +190,17 @@ function Register({}: Props) {
             label="City"
             value={city}
             setValue={setCity}
-            placeholder_="enter city"
+            placeholder_="Enter city"
           />
-
+          {/* 
           <FieldItem
             label="National Id/Passport No"
             value={nat_id}
             setValue={setNatId}
             placeholder_="national id/ passport No"
-          />
+          /> */}
           <FieldItem
-            label="Organisation Type"
+            label="Affiliate"
             value={org_type}
             setValue={setOrgType}
             is_dropdown
@@ -214,7 +214,7 @@ function Register({}: Props) {
               { name: "Commerce" },
               { name: "Health" },
             ]}
-            placeholder_="Organisation Type"
+            placeholder_="Affiliate"
           />
 
           <FieldItem
@@ -264,19 +264,20 @@ function Register({}: Props) {
               { name: "Corporate" },
               { name: "Undergraduates" },
               { name: "Postgraduates" },
-              { name: "Non presenter/General Attendee/Exhibiter" },
+              { name: "Non presenter/General Attendee" },
+              { name: "Exhibitor" },
             ]}
             placeholder_="Delegate type"
           />
           <FieldItem
-            label="Inidicate Special Needs"
+            label="Indicate Special Needs"
             is_message
             value={special_needs}
             setValue={setSpecialNeeds}
-            placeholder_="What special needs do you needs"
+            placeholder_="What special needs do you needs e.g wheelchair bound"
           />
           <FieldItem
-            label="Diet"
+            label="Indicate dietary requirements"
             is_message
             value={dietary}
             setValue={setDietaryNeeds}
@@ -285,11 +286,11 @@ function Register({}: Props) {
 
           <div className="grid md:grid-cols-4 md:gap-4 gap-2 grid-cols-1 items-center">
             <div className="col-span-1 font-semibold">
-              {"Select Proof of payment"}{" "}
+              {" Proof of payment"}{" "}
             </div>
             <div className="md:col-span-3 col-span-1">
               <div>
-                Upload Proof Of Payment{" "}
+                Upload Proof of Payment{" "}
                 <input
                   type="file"
                   name="file"
@@ -301,17 +302,42 @@ function Register({}: Props) {
             </div>
           </div>
 
-          {file_loading ? (
-            <div className="flex self-end bg-blue-900 text-white p-2 rounded-lg cursor-pointer">
-              Uploading File ...
-            </div>
+          <div className="flex items-center">
+            <input
+              id="terms"
+              name="terms"
+              type="checkbox"
+              value={agreed}
+              onChange={(e) => setAgreed(e.target.checked)}
+              className="h-4 w-4 rounded border-gray-300 text-blue-primary focus:ring-red-400"
+            />
+            <label htmlFor="terms" className="ml-2 block text-sm text-gray-900">
+              I consent to share
+              <span className="text-blue-900"> the information above</span>
+            </label>
+          </div>
+
+          {agreed ? (
+            <>
+              {file_loading ? (
+                <div className="flex self-end bg-blue-900 text-white p-2 rounded-lg cursor-pointer">
+                  Uploading File ...
+                </div>
+              ) : (
+                <div
+                  onClick={upload_video}
+                  className="flex self-end bg-blue-900 text-white p-2 rounded-lg cursor-pointer"
+                >
+                  Register
+                </div>
+              )}
+            </>
           ) : (
-            <div
-              onClick={upload_video}
-              className="flex self-end bg-blue-900 text-white p-2 rounded-lg cursor-pointer"
-            >
-              Register
-            </div>
+            <>
+              <div className="flex self-end bg-gray-500 text-white p-2 rounded-lg cursor-pointer">
+                Register
+              </div>
+            </>
           )}
         </div>
       </div>
@@ -342,7 +368,7 @@ const FieldItem = ({
 }: FieldItemProps) => {
   return (
     <div className="grid md:grid-cols-4 md:gap-4 gap-2 grid-cols-1 items-center">
-      <div className="col-span-1 font-semibold">
+      <div className="col-span-1 font-semibold capitalize">
         {label}{" "}
         {optional && (
           <span className="tex-slate-400 text-xs font-normal">(optional)</span>
