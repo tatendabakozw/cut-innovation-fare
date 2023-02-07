@@ -84,7 +84,7 @@ const Home = (props: Props): ReactElement => {
           <ArrowDownCircleIcon height={28} width={28} />
         </div>
         <div className="flex flex-row w-full font-semibold items-center z-50 justify-between p-2">
-          <div className="flex-1"></div>
+          <div className="md:flex hidden flex-1"></div>
           <span className="flex flex-col items-center md:space-x-4 space-x-2">
             <img
               src={logo}
