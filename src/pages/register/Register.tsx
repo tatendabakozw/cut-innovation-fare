@@ -116,13 +116,14 @@ function Register({}: Props) {
     <div className="w-full bg-slate-100 min-h-screen">
       <div className="max-w-7xl p-4 w-full mx-auto rounded">
         <div className="bg-white w-full max-w-7xl flex flex-col space-y-8 mx-auto md:p-8 p-4 h-full rounded-lg">
-          <div className="flex">
+          <div className="flex  w-full flex-row items-center justify-between">
             <Link
               to="/"
-              className="flex bg-slate-100 hover:bg-slate-200 rounded-full p-2"
+              className="flex bg-slate-200 hover:bg-slate-100 rounded-full p-2"
             >
               <ArrowLeftIcon height={24} width={24} />
             </Link>
+            <a href='/participation' className="bg-slate-200 hover:bg-slate-100 p-2 font-semibold rounded">How to participate</a>
           </div>
           <p className="text-lg font-semibold text-slate-900 text-center">
             Register Now
@@ -200,21 +201,21 @@ function Register({}: Props) {
             placeholder_="national id/ passport No"
           /> */}
           <FieldItem
-            label="Affiliate"
+            label="Affiliation"
             value={org_type}
             setValue={setOrgType}
-            is_dropdown
-            select_options={[
-              { name: "Agriculture" },
-              { name: "Education" },
-              { name: "Energy" },
-              { name: "Tourism" },
-              { name: "Finance" },
-              { name: "Construction" },
-              { name: "Commerce" },
-              { name: "Health" },
-            ]}
-            placeholder_="Affiliate"
+            // is_dropdown
+            // select_options={[
+            //   { name: "Agriculture" },
+            //   { name: "Education" },
+            //   { name: "Energy" },
+            //   { name: "Tourism" },
+            //   { name: "Finance" },
+            //   { name: "Construction" },
+            //   { name: "Commerce" },
+            //   { name: "Health" },
+            // ]}
+            placeholder_="Indicate your organisation type"
           />
 
           <FieldItem
@@ -260,8 +261,9 @@ function Register({}: Props) {
             setValue={setDelagateType}
             is_dropdown
             select_options={[
-              { name: "Professional" },
-              { name: "Corporate" },
+              { name: "Professional Academia" },
+              { name: "Professional Non-Academia" },
+              // { name: "Corporate" },
               { name: "Undergraduates" },
               { name: "Postgraduates" },
               { name: "Non presenter/General Attendee" },
@@ -274,7 +276,7 @@ function Register({}: Props) {
             is_message
             value={special_needs}
             setValue={setSpecialNeeds}
-            placeholder_="What special needs do you needs e.g wheelchair bound"
+            placeholder_="Indicate any special needs e.g wheelchair bound"
           />
           <FieldItem
             label="Indicate dietary requirements"
@@ -286,11 +288,11 @@ function Register({}: Props) {
 
           <div className="grid md:grid-cols-4 md:gap-4 gap-2 grid-cols-1 items-center">
             <div className="col-span-1 font-semibold">
-              {" Proof of payment"}{" "}
+              {" Proof Of Payment"}{" "}
             </div>
             <div className="md:col-span-3 col-span-1">
               <div>
-                Upload Proof of Payment{" "}
+                Upload proof of payment{" "}
                 <input
                   type="file"
                   name="file"
