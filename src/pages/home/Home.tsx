@@ -165,7 +165,7 @@ export const StepItem = (props: StepItemProps) => {
       <h3 className="font-medium leading-tight capitalize text-slate-900">
         {props.heading}
       </h3>
-      <p className="text-sm">{props.desciption}</p>
+      <p className="text-sm whitespace-pre-line">{props.desciption}</p>
     </li>
   );
 };
