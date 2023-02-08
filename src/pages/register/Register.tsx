@@ -58,6 +58,7 @@ function Register({}: Props) {
           presentation_type,
           special_needs,
           diet: dietary,
+          agreed: agreed
         });
         console.log(data);
         setFileLoading(false);
@@ -72,7 +73,7 @@ function Register({}: Props) {
       } catch (error) {
         setFileLoading(false);
         toast({
-          title: "Registration Failed.",
+          title: getMessage(error),
           status: "error",
           duration: 9000,
           isClosable: true,
