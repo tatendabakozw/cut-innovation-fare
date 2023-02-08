@@ -40,7 +40,7 @@ function Register({}: Props) {
   const [agreed, setAgreed] = useState<any>(false);
 
   const storage = getStorage(firebaseApp);
-  const history = useNavigate()
+  const history = useNavigate();
 
   const upload_video = async (e: any) => {
     if (!csvFile) {
@@ -59,12 +59,25 @@ function Register({}: Props) {
           presentation_type,
           special_needs,
           diet: dietary,
-          agreed: agreed
+          agreed: agreed,
         });
         console.log(data);
+        setEmail("");
+        setPhone("");
+        setCountry("");
+        setFullName("");
+        setCity("");
+        setTitle("");
+        setOrgType("");
+        setThematicArea("");
+        setPresType("");
+        setDelagateType("");
+        setSpecialNeeds("");
+        setDietaryNeeds("");
+
         setFileLoading(false);
         setTimeout(() => {
-          history('/success')
+          history("/success");
         }, 1000);
         toast({
           title: "Registration Successful.",
@@ -126,8 +139,20 @@ function Register({}: Props) {
                 );
                 console.log(data);
                 setFileLoading(false);
+                setEmail("");
+                setPhone("");
+                setCountry("");
+                setFullName("");
+                setCity("");
+                setTitle("");
+                setOrgType("");
+                setThematicArea("");
+                setPresType("");
+                setDelagateType("");
+                setSpecialNeeds("");
+                setDietaryNeeds("");
                 setTimeout(() => {
-                  history('/success')
+                  history("/success");
                 }, 1000);
                 toast({
                   title: "Registration Successful.",
@@ -388,9 +413,7 @@ function Register({}: Props) {
             </>
           ) : (
             <>
-              <div
-                className="flex self-end bg-gray-500 text-white p-2 rounded-lg cursor-pointer"
-              >
+              <div className="flex self-end bg-gray-500 text-white p-2 rounded-lg cursor-pointer">
                 Register
               </div>
             </>
