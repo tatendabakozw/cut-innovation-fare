@@ -68,6 +68,7 @@ function Register({}: Props) {
           isClosable: true,
           position: "top-right",
         });
+        return;
       } catch (error) {
         setFileLoading(false);
         toast({
@@ -77,6 +78,7 @@ function Register({}: Props) {
           isClosable: true,
           position: "top-right",
         });
+        return;
       }
     }
     const videoFile = csvFile;
