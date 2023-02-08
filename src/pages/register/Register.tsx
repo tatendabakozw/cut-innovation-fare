@@ -3,7 +3,7 @@ import { Select, useToast } from "@chakra-ui/react";
 import { useFetch } from "@hooks/useFetch";
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 import slugify from "@helpers/sligify";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   getStorage,
   ref,
@@ -40,6 +40,7 @@ function Register({}: Props) {
   const [agreed, setAgreed] = useState<any>(false);
 
   const storage = getStorage(firebaseApp);
+  const history = useNavigate()
 
   const upload_video = async (e: any) => {
     if (!csvFile) {
@@ -62,6 +63,9 @@ function Register({}: Props) {
         });
         console.log(data);
         setFileLoading(false);
+        setTimeout(() => {
+          history('/success')
+        }, 1000);
         toast({
           title: "Registration Successful.",
           status: "success",
@@ -122,6 +126,9 @@ function Register({}: Props) {
                 );
                 console.log(data);
                 setFileLoading(false);
+                setTimeout(() => {
+                  history('/success')
+                }, 1000);
                 toast({
                   title: "Registration Successful.",
                   status: "success",
