@@ -10,7 +10,6 @@ import logo from "../../assets/icon.png";
 import cog_wheel from "../../assets/cogwheel1.svg";
 import cog_blue1 from "../../assets/cog_blue1.svg";
 import { Link } from "react-router-dom";
-import slugify from "@helpers/sligify";
 import ConferenceSteps from "@components/ConferenceSteps/ConferenceSteps";
 
 type Props = {};
