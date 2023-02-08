@@ -382,7 +382,6 @@ function Register({}: Props) {
           ) : (
             <>
               <div
-                onClick={upload_video}
                 className="flex self-end bg-gray-500 text-white p-2 rounded-lg cursor-pointer"
               >
                 Register
