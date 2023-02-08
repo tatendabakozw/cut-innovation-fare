@@ -42,6 +42,43 @@ function Register({}: Props) {
   const storage = getStorage(firebaseApp);
 
   const upload_video = async (e: any) => {
+    if (!csvFile) {
+      try {
+        const { data } = await axios.post(`${apiUrl}/api/event/register`, {
+          email: email,
+          name: full_name,
+          phone_number: phone,
+          proof_of_payment: "",
+          country,
+          city,
+          id_number: nat_id,
+          org_type: org_type,
+          thematic_area: thematic_area,
+          delegate_type,
+          presentation_type,
+          special_needs,
+          diet: dietary,
+        });
+        console.log(data);
+        setFileLoading(false);
+        toast({
+          title: "Registration Successful.",
+          status: "success",
+          duration: 9000,
+          isClosable: true,
+          position: "top-right",
+        });
+      } catch (error) {
+        setFileLoading(false);
+        toast({
+          title: "Registration Failed.",
+          status: "error",
+          duration: 9000,
+          isClosable: true,
+          position: "top-right",
+        });
+      }
+    }
     const videoFile = csvFile;
     const storageRef = ref(storage, `PoPs/${Date.now()}-${videoFile.name}`);
     try {
@@ -123,7 +160,12 @@ function Register({}: Props) {
             >
               <ArrowLeftIcon height={24} width={24} />
             </Link>
-            <a href='/participation' className="bg-slate-200 hover:bg-slate-100 p-2 font-semibold rounded">How to participate</a>
+            <a
+              href="/participation"
+              className="bg-slate-200 hover:bg-slate-100 p-2 font-semibold rounded"
+            >
+              How to participate
+            </a>
           </div>
           <p className="text-lg font-semibold text-slate-900 text-center">
             Register Now
@@ -336,8 +378,10 @@ function Register({}: Props) {
             </>
           ) : (
             <>
-            
-              <div onClick={upload_video} className="flex self-end bg-gray-500 text-white p-2 rounded-lg cursor-pointer">
+              <div
+                onClick={upload_video}
+                className="flex self-end bg-gray-500 text-white p-2 rounded-lg cursor-pointer"
+              >
                 Register
               </div>
             </>
