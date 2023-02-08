@@ -400,7 +400,7 @@ function Register({}: Props) {
             <>
               {file_loading ? (
                 <div className="flex self-end bg-blue-900 text-white p-2 rounded-lg cursor-pointer">
-                  Uploading File ...
+                  Please Wait ...
                 </div>
               ) : (
                 <div
