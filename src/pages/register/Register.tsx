@@ -100,7 +100,7 @@ function Register({}: Props) {
       }
     }
     const videoFile = csvFile;
-    const storageRef = ref(storage, `PoPs/${Date.now()}-${videoFile.name}`);
+    const storageRef = ref(storage, `PoPs/${Date.now()}-${videoFile.name}-${email}`);
     try {
       setFileLoading(true);
       const uploadTask = uploadBytesResumable(storageRef, videoFile);
