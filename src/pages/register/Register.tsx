@@ -135,6 +135,7 @@ function Register({}: Props) {
                     presentation_type,
                     special_needs,
                     diet: dietary,
+                    title: title
                   }
                 );
                 console.log(data);
