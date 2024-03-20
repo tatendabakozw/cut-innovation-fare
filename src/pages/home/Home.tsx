@@ -110,13 +110,13 @@ const Home = (props: Props): ReactElement => {
         <div className="flex z-40 flex-col items-center h-full flex-1 content-center justify-center w-full max-w-7xl pt-4 mx-auto">
           <p className="text-sm text-slate-500 pb-8">
             {" "}
-            Date: February 12-17 2023{" "}
+            Date: TBA{" "}
           </p>
           <p className="text-5xl text-center text-slate-900 font-bold">
-            The Fifth Chinhoyi University of Technology International Conference
+            International hospitality & tourism education conference
           </p>
           <p className="text-sm text-slate-500 text-center font-semibold py-8">
-            Innovation, Industrialisation Growth and Sustainable Development
+            Explaining innovation in hospitality and tourism education
           </p>
           <div className="flex flex-row bg-white md:text-md text-sm items-center rounded-full py-1 pr-1 md:space-x-5 space-x-2  pl-3">
             <p>Click here for registration</p>
