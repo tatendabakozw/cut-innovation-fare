@@ -22,10 +22,7 @@ const ConferenceSteps = (props: Props) => {
       Currency: USD
       Banking details for CUT ZWL Account
       Account Name: Chinhoyi  	University of Technology
-      Bank name: CBZ Bank
-      Branch: Chinhoyi
-      Bank account Number:  09821460210054
-      Currency: ZWL
+      
       
       Banking details for CUT USD Nostro
       Account Name: Chinhoyi  	University of Technology
@@ -34,16 +31,7 @@ const ConferenceSteps = (props: Props) => {
       Bank account Number:  4565-386395-410
       Currency Nostro: USD
       
-      Banking details for CUT USD Nostro
-      Account Name: Chinhoyi  	University of Technology
-      For International Payments Only
-      Bank name: FBC BANK
-      Branch: Chinhoyi
-      Bank account Number:  1140042840350
-      Branch Code: 8511
-      Bankers Address: 5309 Magamba Way
-      Swift Code: FBCPZWHA
-      Currency Nostro: USD
+      
       Keep Proof of Payment for uploading under Online Registration
       Onsite payments are also acceptable using swipe or cash upon arrival 
       

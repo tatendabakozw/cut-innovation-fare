@@ -296,59 +296,9 @@ function Register({}: Props) {
             placeholder_="Indicate your organisation type"
           />
 
-          <FieldItem
-            label="Thematic Area"
-            value={thematic_area}
-            setValue={setThematicArea}
-            is_dropdown
-            select_options={[
-              { name: "Sustainable Food Systems" },
-              { name: "Creative Design Practices" },
-              {
-                name: "Entrepreneurship, Industrialisation, and Business Development",
-              },
-              {
-                name: "Engineering a Sustanable future through creativity, innovation and industrilization",
-              },
-              { name: "Sustainable materials and Circular Production Systems" },
-              {
-                name: "Human and Animal Health, Ethno-medicines and Drug Discovery",
-              },
-              {
-                name: "Biodiversity Consevation, Climate Change and Sustainable Development",
-              },
-            ]}
-            placeholder_="Select Thematic Area"
-          />
-          <FieldItem
-            label="Presention Type"
-            value={presentation_type}
-            setValue={setPresType}
-            is_dropdown
-            select_options={[
-              { name: "Oral" },
-              { name: "Poster" },
-              { name: "Exhibition" },
-              { name: "Online" },
-            ]}
-            placeholder_="Presentation type"
-          />
-          <FieldItem
-            label="Delegate Type"
-            value={delegate_type}
-            setValue={setDelagateType}
-            is_dropdown
-            select_options={[
-              { name: "Professional Academia" },
-              { name: "Professional Non-Academia" },
-              // { name: "Corporate" },
-              { name: "Undergraduates" },
-              { name: "Postgraduates" },
-              { name: "Non presenter/General Attendee" },
-              { name: "Exhibitor" },
-            ]}
-            placeholder_="Delegate type"
-          />
+         
+          
+       
           <FieldItem
             label="Indicate Special Needs"
             is_message
