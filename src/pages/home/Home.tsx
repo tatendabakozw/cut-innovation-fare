@@ -116,7 +116,7 @@ const Home = (props: Props): ReactElement => {
             International hospitality & tourism education conference
           </p>
           <p className="text-sm text-slate-500 text-center font-semibold py-8">
-            Exploring groeth, innovation and industrialisation opportunities in hospitality and tourism education
+            Exploring growth, innovation and industrialisation opportunities in hospitality and tourism education
           </p>
           <div className="flex flex-row bg-white md:text-md text-sm items-center rounded-full py-1 pr-1 md:space-x-5 space-x-2  pl-3">
             <p>Click here for registration</p>
