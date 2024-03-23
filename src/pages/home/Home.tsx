@@ -11,6 +11,7 @@ import cog_wheel from "../../assets/cogwheel1.svg";
 import cog_blue1 from "../../assets/cog_blue1.svg";
 import { Link } from "react-router-dom";
 import ConferenceSteps from "@components/ConferenceSteps/ConferenceSteps";
+import msu_logo from '../../assets/msu_logo.jped'
 
 type Props = {};
 
@@ -83,19 +84,24 @@ const Home = (props: Props): ReactElement => {
           <ArrowDownCircleIcon height={28} width={28} />
         </div>
         <div className="flex flex-row w-full font-semibold items-center z-50 justify-between p-2">
-          <div className="md:flex hidden flex-1"></div>
-          <span className="flex flex-col items-center md:space-x-4 space-x-2">
+          {/* <div className="md:flex hidden flex-1"></div> */}
+          <span className="flex flex-row items-center md:space-x-4 space-x-2">
             <img
               src={logo}
               alt="logo icon"
               className="md:h-24 h-16 md:w-24 w-16"
             />
-            <p>Chinhoyi University Of Technology</p>
+            <img
+              src={msu_logo}
+              alt="msu logo icon"
+              className="md:h-24 h-16 md:w-24 w-16 rounded-full object-cover bg-white"
+            />
           </span>
+            <p>Chinhoyi University Of Technology</p>
           <div className="flex-1 flex flex-col">
             <Link
               to="/register"
-              className="bg-blue-900 self-end  text-white md:text-sm text-xs py-2 px-3 rounded-full"
+              className="bg-blue-900 self-end flex-shrink-0  text-white md:text-sm text-xs py-2 px-3 rounded-full"
             >
               Register Now
             </Link>
