@@ -97,7 +97,9 @@ const Home = (props: Props): ReactElement => {
               className="md:h-24 h-16 md:w-24 w-16 rounded-full object-cover bg-white"
             />
           </span>
+            <div className="flex">
             <p>Chinhoyi University Of Technology</p>
+            </div>
           <div className="flex-1 flex flex-col">
             <Link
               to="/register"
