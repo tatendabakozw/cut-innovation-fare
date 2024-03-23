@@ -11,7 +11,7 @@ import cog_wheel from "../../assets/cogwheel1.svg";
 import cog_blue1 from "../../assets/cog_blue1.svg";
 import { Link } from "react-router-dom";
 import ConferenceSteps from "@components/ConferenceSteps/ConferenceSteps";
-import msu_logo from '../../assets/msu_logo.jped'
+import msu_logo from '../../assets/msu_logo.jpeg'
 
 type Props = {};
 
