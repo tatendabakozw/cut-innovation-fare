@@ -110,7 +110,7 @@ const Home = (props: Props): ReactElement => {
         <div className="flex z-40 flex-col items-center h-full flex-1 content-center justify-center w-full max-w-7xl pt-4 mx-auto">
           <p className="text-sm text-slate-500 pb-8">
             {" "}
-            Date: TBA{" "}
+            Date: 9-11 April
           </p>
           <p className="text-5xl text-center text-slate-900 font-bold">
             International hospitality & tourism education conference

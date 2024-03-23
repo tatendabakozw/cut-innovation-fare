@@ -38,6 +38,7 @@ function Register({}: Props) {
   const [progress, setProgress] = useState();
   const toast = useToast();
   const [agreed, setAgreed] = useState<any>(false);
+  const [job_title, setJobTitle] = useState('')
 
   const storage = getStorage(firebaseApp);
   const history = useNavigate();
@@ -223,6 +224,12 @@ function Register({}: Props) {
             label="Full Name"
             value={full_name}
             setValue={setFullName}
+            placeholder_="John Doe"
+          />
+          <FieldItem
+            label="Job Title"
+            value={job_title}
+            setValue={setJobTitle}
             placeholder_="John Doe"
           />
           <FieldItem
