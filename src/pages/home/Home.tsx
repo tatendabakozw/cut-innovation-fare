@@ -11,7 +11,7 @@ import cog_wheel from "../../assets/cogwheel1.svg";
 import cog_blue1 from "../../assets/cog_blue1.svg";
 import { Link } from "react-router-dom";
 import ConferenceSteps from "@components/ConferenceSteps/ConferenceSteps";
-import msu_logo from '../../assets/msu_logo.jpeg'
+import msu_logo from '../../assets/mcsu_logo.png'
 
 type Props = {};
 
@@ -98,7 +98,7 @@ const Home = (props: Props): ReactElement => {
             />
           </span>
             <div className="flex">
-            <p>Chinhoyi University Of Technology</p>
+            <p className="font-medium">Chinhoyi University Of Technology</p>
             </div>
           <div className="flex-1 flex flex-col">
             <Link
